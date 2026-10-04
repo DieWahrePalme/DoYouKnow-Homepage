@@ -1,0 +1,15 @@
+---
+import { HELLO_EMAIL } from '../data/links';
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="wrap">
+    <span>© {year} DoYouKnow</span>
+    <nav aria-label="Footer">
+      <a href="/support">Support</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/imprint">Imprint</a>
+      <a href={`mailto:${HELLO_EMAIL}`}>{HELLO_EMAIL}</a>
+    </nav>
+  </div>
+</footer>

@@ -1,0 +1,11 @@
+---
+import { FAQ } from '../data/faq';
+---
+<div class="faq">
+  {FAQ.map((item) => (
+    <details>
+      <summary>{item.question}</summary>
+      <p>{item.answer}</p>
+    </details>
+  ))}
+</div>
