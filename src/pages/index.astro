@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import SupportButton from '../components/SupportButton.astro';
+import { TESTFLIGHT_URL, WEB_APP_URL, SITE_URL } from '../data/links';
+
+const steps = [
+  { title: 'Answer your daily card', text: 'One question about you, every day. Pick the answer that fits.' },
+  { title: 'Guess your friends', text: 'See how well you know them, then find out how they really answered.' },
+  { title: 'Keep the streak', text: 'Play daily, keep your flame alive and watch how you change over time.' },
+];
+const plans = [
+  { name: 'Starter', text: 'Everything you need to play daily with friends.' },
+  { name: 'Medium', text: 'More cards and more ways to compare with friends.' },
+  { name: 'Pro', text: 'The full DoYouKnow experience.' },
+];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'DoYouKnow',
+  applicationCategory: 'GameApplication',
+  operatingSystem: 'iOS, Web',
+  url: SITE_URL,
+  description: 'Answer daily questions about yourself, guess how your friends answered and keep your streak.',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  author: { '@type': 'Person', name: 'Moritz Götz' },
+};
+---
+<Base
+  title="DoYouKnow – the daily game of knowing your friends"
+  description="Answer daily questions about yourself, guess how your friends answered and keep your streak. Free during the beta."
+  jsonLd={jsonLd}
+>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Daily game · free in beta</p>
+        <h1>How well do you <span class="grad">know</span> your friends?</h1>
+        <p class="lead">Answer daily questions about yourself, guess how your friends answered, and keep your streak.</p>
+        <div class="btn-row">
+          {TESTFLIGHT_URL
+            ? <a class="btn btn-primary" href={TESTFLIGHT_URL}>Join the beta</a>
+            : <a class="btn btn-primary" href="#faq" aria-describedby="beta-note">Join the beta</a>}
+          <a class="btn" href={WEB_APP_URL}>Play in the browser</a>
+        </div>
+        {!TESTFLIGHT_URL && <p class="note" id="beta-note">The TestFlight invite is coming soon. Play in the browser meanwhile.</p>}
+      </div>
+      <div class="phone" role="img" aria-label="Preview of a DoYouKnow daily question card">
+        <div class="phone-screen">
+          <span class="pill">🔥 12 day streak</span>
+          <div class="qcard">
+            <span>Today's card</span>
+            <strong>What would you do with a free Saturday?</strong>
+            <div class="opt on">Sleep in, then wander</div>
+            <div class="opt">Plan something big</div>
+            <div class="opt">Call everyone</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps. One minute a day.</h2>
+      <div class="cards">
+        {steps.map((step, i) => (
+          <div class="card">
+            <span class="num">{i + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="plans">
+    <div class="wrap">
+      <p class="eyebrow">Plans</p>
+      <h2>Free during the beta.</h2>
+      <p class="free-banner lead">Paid tiers are planned. Nothing to buy today.</p>
+      <div class="cards">
+        {plans.map((plan) => (
+          <div class="card">
+            <h3>{plan.name}</h3>
+            <p>{plan.text}</p>
+            <span class="tag">Coming soon</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="eyebrow">About</p>
+      <h2>An indie project.</h2>
+      <p class="lead">Made by Moritz Götz.</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <p class="eyebrow">FAQ</p>
+      <h2>Good to know.</h2>
+      <Faq />
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="wrap">
+      <p class="eyebrow">Support</p>
+      <h2>Questions? Write us.</h2>
+      <SupportButton />
+    </div>
+  </section>
+</Base>
