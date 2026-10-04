@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { PRIVACY_POLICY, PRIVACY_POLICY_UPDATED } from '../data/privacyPolicy';
+---
+<Base title="Privacy Policy – DoYouKnow" description="How DoYouKnow handles your data.">
+  <div class="page">
+    <div class="wrap prose">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: {PRIVACY_POLICY_UPDATED}</p>
+      {PRIVACY_POLICY.map((section) => (
+        <>
+          <h2>{section.title}</h2>
+          {section.paragraphs.map((text) => <p>{text}</p>)}
+          {section.bullets && <ul>{section.bullets.map((item) => <li>{item}</li>)}</ul>}
+        </>
+      ))}
+    </div>
+  </div>
+</Base>

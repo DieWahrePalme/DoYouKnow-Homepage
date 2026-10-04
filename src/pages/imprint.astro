@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { HELLO_EMAIL } from '../data/links';
+---
+<Base title="Imprint – DoYouKnow" description="Legal notice (Impressum) for DoYouKnow." noindex>
+  <div class="page">
+    <div class="wrap prose">
+      <h1>Imprint</h1>
+      <div class="todo">
+        TODO (Moritz): the postal address is missing. Decide between home address and an imprint service,
+        then fill it in. Do not deploy this page publicly before that (§5 DDG).
+      </div>
+      <h2>Provider</h2>
+      <p>Moritz Götz</p>
+      <p>[Postal address – TODO]</p>
+      <h2>Contact</h2>
+      <p>Email: {HELLO_EMAIL}</p>
+    </div>
+  </div>
+</Base>
