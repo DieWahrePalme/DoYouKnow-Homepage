@@ -4,3 +4,5 @@ export const WEB_APP_URL = 'https://app.playdoyouknow.com';
 // TODO(Moritz): paste the public TestFlight link (https://testflight.apple.com/join/...).
 export const TESTFLIGHT_URL: string | null = null;
 export const SITE_URL = 'https://playdoyouknow.com';
+// Central imprint for all of Moritz' sites, kept on his business site.
+export const IMPRINT_URL = 'https://www.sitstudio.de/impressum/';
